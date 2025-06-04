@@ -1,5 +1,5 @@
 import sqlite3
-from utils import config
+from backend.utils import config
 import os
 
 DB_FILE = config["SETTINGS"]["DATABASE_FILE"]

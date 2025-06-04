@@ -1,9 +1,8 @@
 import re
 from dateutil import parser
 from datetime import datetime
-from schema import ProspectInfo
-from db import check_inventory, insert_user, find_existing_user, get_next_available_slot, insert_booking, get_property_by_id
-from utils import send_confirmation_email
+from backend.db import check_inventory, insert_user, find_existing_user, get_next_available_slot, insert_booking, get_property_by_id
+from backend.utils import send_confirmation_email
 
 def validate_email(email: str) -> bool:
      '''

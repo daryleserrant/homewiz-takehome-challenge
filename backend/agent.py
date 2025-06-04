@@ -5,10 +5,10 @@ from langchain.tools import StructuredTool
 from langchain.tools.render import format_tool_to_openai_tool
 from langchain.agents.output_parsers.openai_tools import OpenAIToolsAgentOutputParser
 from langchain.agents.format_scratchpad.openai_tools import format_to_openai_tool_messages
-from tools import validate_email, validate_phone, validate_move_in_date, validate_beds, store_prospect_info, check_availability, book_tour
+from backend.tools import validate_email, validate_phone, validate_move_in_date, validate_beds, store_prospect_info, check_availability, book_tour
 from langchain.memory import ConversationBufferMemory
-from utils import config
-from schema import BookTourInput, ProspectInfo
+from backend.utils import config
+from backend.schema import BookTourInput, ProspectInfo
 
 import os
 
