@@ -175,12 +175,12 @@ def get_property_by_id(property_id: int) -> dict:
         return None
 
 def seed_db():
-    if not os.path.exists("seed.sql"):
+    if not os.path.exists("backend/seed.sql"):
         print("Seed.sql file not found.")
         return
 
     with sqlite3.connect(DB_FILE) as conn:
-        with open("seed.sql", "r") as f:
+        with open("backend/seed.sql", "r") as f:
             conn.executescript(f.read())
         print("Seed data loaded.")
 
