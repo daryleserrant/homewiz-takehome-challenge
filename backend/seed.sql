@@ -38,7 +38,7 @@ INSERT INTO properties (address, beds, available) VALUES
 ('141 Walnut St', 2, 0),
 ('900 Juniper St', 1, 1),
 ('244 Ashford Dr', 3, 1),
-('390 Beechwood Ln', 2, 1)
+('390 Beechwood Ln', 2, 1),
 ('512 Chestnut Grove', 5, 1);
 
 -- Insert availability (start_time and end_time format)
