@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from backend.agent import get_or_create_agent_executor
 from contextlib import asynccontextmanager
-from db import setup_db
+from backend.db import setup_db
 from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
