@@ -1,0 +1,8 @@
+fastapi[standard]
+langchain
+langchain_core
+langchain_openai
+python-dotenv
+python-dateutil
+pydantic
+aiofiles
