@@ -30,6 +30,10 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     reply: str
 
+@app.get("/")
+def health_check():
+    return {"status": "Lead-to-Lease API is live"}
+
 @app.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
     agent_executor = get_or_create_agent_executor(req.session_id)
