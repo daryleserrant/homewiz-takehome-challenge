@@ -1,3 +1,5 @@
+const apiUrl = "https://lead-to-lease.onrender.com/chat";
+// const apiUrl = "http://localhost:8000/chat"; // Uncomment for local testing
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
 const chatBox = document.getElementById("chat-box");
@@ -27,7 +29,7 @@ chatForm.addEventListener("submit", async (e) => {
   loadingIndicator.classList.remove("hidden");
 
   try {
-    const response = await fetch("http://localhost:8000/chat", {
+    const response = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
