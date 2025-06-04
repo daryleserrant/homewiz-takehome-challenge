@@ -12,7 +12,7 @@ import os
 config = {
     "SETTINGS": {
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
-        "DATABASE_FILE": os.getenv("DATABASE_FILE", "lead_to_lease.db"),
+        "DATABASE_FILE": os.getenv("DATABASE_FILE", "backend/lead_to_lease.db"),
         "MODEL": "gpt-4o",
         "SMTP_SERVER": os.getenv("SMTP_SERVER"),
         "SMTP_PORT": int(os.getenv("SMTP_PORT", "587")),
