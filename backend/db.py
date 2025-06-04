@@ -1,6 +1,7 @@
 import sqlite3
 from backend.utils import config
 import os
+import random
 
 DB_FILE = config["SETTINGS"]["DATABASE_FILE"]
 
@@ -92,19 +93,19 @@ def find_existing_user(email: str):
 
 def check_inventory(beds: int) -> int:
     """
-    Queries the database for a property with the given number of beds.
-    Returns the property id if found, otherwise returns None.
+    Queries the database for all properties with the given number of beds that are available.
+    Returns the property id of a randomly selected property if found, otherwise returns None.
     """
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT id FROM properties WHERE beds = ? AND available = 1 LIMIT 1",
+        "SELECT id FROM properties WHERE beds = ? AND available = 1",
         (beds,)
     )
-    result = cursor.fetchone()
+    results = cursor.fetchall()
     conn.close()
-    if result:
-        return result[0]
+    if results:
+        return random.choice(results)[0]
     else:
         return None
 
