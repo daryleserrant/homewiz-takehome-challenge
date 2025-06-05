@@ -107,26 +107,26 @@ The schema is initialized automatically on first run and can be seeded with samp
 
 ## Project Structure & File Descriptions
 
-homewiz-takehome-challenge/
-│
-├── README.md
-├── requirements.txt
-│
-├── backend/
-│   ├── agent.py
-│   ├── config.ini
-│   ├── db.py
-│   ├── lead_to_lease.db
-│   ├── main.py
-│   ├── schema.py
-│   ├── seed.sql
-│   ├── tools.py
-│   └── utils.py
+homewiz-takehome-challenge/  
+│  
+├── README.md  
+├── requirements.txt  
+│  
+├── backend/  
+│   ├── agent.py  
+│   ├── config.ini  
+│   ├── db.py  
+│   ├── lead_to_lease.db  
+│   ├── main.py  
+│   ├── schema.py  
+│   ├── seed.sql  
+│   ├── tools.py  
+│   └── utils.py  
 │   
-└── frontend/
-    ├── index.html
-    ├── script.js
-    └── styles.css
+└── frontend/  
+    ├── index.html  
+    ├── script.js  
+    └── styles.css  
 
 Backend Files
 - `agent.py`: Sets up the conversational agent, integrates LangChain tools, manages per-session memory and agent executors.
