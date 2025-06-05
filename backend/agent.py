@@ -72,7 +72,7 @@ def create_agent_executor(session_id: str) -> AgentExecutor:
         StructuredTool.from_function(
             name="book_tour",
             func=book_tour,
-            description="Book a tour for the prospect and send a confirmation email. Returns a confirmation message.",
+            description="Book a tour using the property unit id, name, email, and id of the user the tour is for. Sends a confirmation email and returns a confirmation message.",
             args_schema= BookTourInput
         )
     ]
@@ -82,8 +82,9 @@ def create_agent_executor(session_id: str) -> AgentExecutor:
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a helpful leasing assistant. Ask the user for their name, email, phone number, desired move-in date, and number of bedrooms.
-         Do not search availability or confirm a tour until all details are collected and validated for correctness. If no available properties are found, inform the user and suggest they check back later.
-         If there are no available time slots for a tour, inform the user and suggest they check back later."""),
+         Do not search availability or confirm a tour until all details are collected and validated for correctness. If no available properties are found, 
+         inform the user and suggest they check back later. If there are no available time slots for a tour, inform the user and suggest they check back later.
+         After finding an available property, present the unit ID to the user and seek confirmation before booking the tour."""),
         MessagesPlaceholder(variable_name="chat_history"),
         ("user", "{input}"),
         MessagesPlaceholder(variable_name="agent_scratchpad")

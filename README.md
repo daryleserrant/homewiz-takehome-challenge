@@ -15,6 +15,51 @@ The project is organized as a full-stack application with a FastAPI backend and 
 
 ---
 
+## Database Schema
+
+The application uses a SQLite database with the following tables:
+
+### users
+| Column   | Type     | Description                |
+|----------|----------|----------------------------|
+| id       | INTEGER  | Primary key, auto-increment|
+| name     | TEXT     | User's full name           |
+| email    | TEXT     | User's email address       |
+| phone    | TEXT     | User's phone number        |
+
+### properties
+| Column     | Type     | Description                        |
+|------------|----------|------------------------------------|
+| id         | INTEGER  | Primary key, auto-increment        |
+| address    | TEXT     | Property address                   |
+| beds       | INTEGER  | Number of bedrooms                 |
+| available  | BOOLEAN  | 1 if available, 0 if not           |
+
+### availability
+| Column      | Type      | Description                              |
+|-------------|-----------|------------------------------------------|
+| id          | INTEGER   | Primary key, auto-increment              |
+| property_id | INTEGER   | Foreign key to properties(id)            |
+| start_time  | DATETIME  | Start time of available slot             |
+| end_time    | DATETIME  | End time of available slot               |
+
+### bookings
+| Column      | Type      | Description                              |
+|-------------|-----------|------------------------------------------|
+| id          | INTEGER   | Primary key, auto-increment              |
+| user_id     | INTEGER   | Foreign key to users(id)                 |
+| property_id | INTEGER   | Foreign key to properties(id)            |
+| slot_id     | INTEGER   | Foreign key to availability(id)          |
+
+**Relationships:**
+- Each booking links a user, a property, and a specific availability slot.
+- Each availability slot is tied to a property.
+- Only properties with `available = 1` are shown to users for booking.
+
+The schema is initialized automatically on first run and can be seeded with sample data using `backend/seed.sql`.
+
+---
+
 ## Dependencies
 
 - Python 3.10+
@@ -38,8 +83,8 @@ The project is organized as a full-stack application with a FastAPI backend and 
    ```sh
    pip install -r requirements.txt
    ```
-3. **Configure `config.ini`**
-   Before running the app, update the settings in `backend/config.ini`:
+3. **Configure `config.ini` or set environment variables**
+   Before running the app, update the settings in `backend/config.ini`. Alternatively, you can set environment variables by updating `backend/utils.py` :
    - `OPENAI_API_KEY`: Your OpenAI API key.
    - `DATABASE_FILE`: Path to your SQLite database file (default: lead_to_lease.db).
    - `MODEL`: OpenAI model to use (e.g., gpt-4o).
@@ -49,11 +94,14 @@ The project is organized as a full-stack application with a FastAPI backend and 
    The backend will automatically initialize and seed the database on first run using `backend/seed.sql`.
 5. **Run the backend server:**
    ```sh
-   cd backend
-   uvicorn main:app --reload --port 8000
+   uvicorn backend.main:app --reload --port 8000
    ```
 6. **Open the frontend:**
-  Open `frontend/index.html` in your browser. The frontend expects the backend to be running at `http://localhost:8000`.
+  ```sh
+  cd frontend
+  http-server -p 3000
+  ```
+  Open `frontend/index.html` in your browser. Update the apiUrl variable in `frontend/script.js` to the url of the deployed backend.
 
 ---
 

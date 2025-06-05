@@ -1,5 +1,5 @@
 const apiUrl = "https://lead-to-lease.onrender.com/chat";
-// const apiUrl = "http://localhost:8000/chat"; // Uncomment for local testing
+//const apiUrl = "http://localhost:8000/chat"; // Uncomment for local testing
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
 const chatBox = document.getElementById("chat-box");

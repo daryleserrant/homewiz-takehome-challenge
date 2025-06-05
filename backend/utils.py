@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 import os
 
 #config = configparser.ConfigParser()
-#config.read('config.ini')
+#config.read('backend/config.ini')
 
 # Set up configuration from environment variables for deployment in Render or similar platforms.
 # You can set these environment variables in your deployment platform.
